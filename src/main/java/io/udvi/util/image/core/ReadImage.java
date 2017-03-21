@@ -1,7 +1,6 @@
-package io.udvi.util.image;
+package io.udvi.util.image.core;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;

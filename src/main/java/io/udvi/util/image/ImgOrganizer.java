@@ -22,7 +22,7 @@ import java.util.GregorianCalendar;
  * @since 1.0.0
  * Created by sureshreddy on 21/03/17.
  */
-public class ImageOrganizer {
+public class ImgOrganizer {
 
     private static String directory = "/Volumes/SURESHREDDY/ORGANIZED_PHOTOS/";
     private static String organizedDirectory = "/Volumes/WORKSPACE/ORGANIZED_PHOTOS/";

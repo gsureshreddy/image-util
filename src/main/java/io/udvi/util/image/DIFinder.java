@@ -1,13 +1,16 @@
 package io.udvi.util.image;
 
 
+import io.udvi.util.image.core.Constants;
+import io.udvi.util.image.core.ImageUtility;
+
 import java.io.File;
 import java.util.*;
 
 /**
  * Created by anandabh on 1/25/2016.
  */
-public class DuplicateImageFinder {
+public class DIFinder {
     public static void main(String [] args){
         if(args != null && args.length >= 2){
             if("findDuplicatePairs".equalsIgnoreCase(args[0]))

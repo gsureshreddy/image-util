@@ -1,10 +1,7 @@
 package io.udvi.util.image;
 
-import com.drew.imaging.ImageMetadataReader;
-import com.drew.imaging.ImageProcessingException;
-import com.drew.metadata.Metadata;
-import com.drew.metadata.exif.ExifIFD0Directory;
-import com.drew.metadata.exif.ExifSubIFDDirectory;
+import io.udvi.util.image.core.Constants;
+import io.udvi.util.image.core.ImageUtility;
 
 import java.io.File;
 import java.io.IOException;
