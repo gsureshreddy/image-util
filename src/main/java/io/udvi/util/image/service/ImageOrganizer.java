@@ -29,7 +29,7 @@ public class ImageOrganizer {
 
     private boolean recursive = false;
 
-    private long counter = 0;
+    private long counter = 5000;
 
     public ImageOrganizer(String baseDirectoryPath, String targetDirectoryPath) {
         this.baseDirectoryPath = baseDirectoryPath;
@@ -84,7 +84,7 @@ public class ImageOrganizer {
 
     public static void main(String args[]) {
         ImageOrganizer imageOrganizer = new ImageOrganizer(
-                "/Volumes/SURESH/",
+                "/Volumes/SURESH/ONE_DRIVE",
                 "/Volumes/SURESH-EXT/PHOTOS_ORGANIZED/"
         );
         imageOrganizer.organizeAndCopy();
