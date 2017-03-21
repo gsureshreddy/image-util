@@ -29,7 +29,7 @@ public class ImageOrganizer {
 
     private boolean recursive = false;
 
-    private long counter = 5000;
+    private long counter = 0;
 
     public ImageOrganizer(String baseDirectoryPath, String targetDirectoryPath) {
         this.baseDirectoryPath = baseDirectoryPath;
@@ -72,6 +72,17 @@ public class ImageOrganizer {
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
+                    } else {
+                        try {
+                            Files.move(
+                                    Paths.get(file.getAbsolutePath()),
+                                    Paths.get(targetDirectoryPath + "OTHERS/PHOTO_" + counter + "_" + file.getName()),
+                                    StandardCopyOption.REPLACE_EXISTING
+                            );
+                            counter++;
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
 
                 }
@@ -87,6 +98,7 @@ public class ImageOrganizer {
                 "/Volumes/SURESH/ONE_DRIVE",
                 "/Volumes/SURESH-EXT/PHOTOS_ORGANIZED/"
         );
+        imageOrganizer.setCounter(7000);
         imageOrganizer.organizeAndCopy();
 
     }
