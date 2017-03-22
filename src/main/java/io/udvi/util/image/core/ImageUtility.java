@@ -1,9 +1,16 @@
 package io.udvi.util.image.core;
 
+import com.drew.imaging.ImageMetadataReader;
+import com.drew.imaging.ImageProcessingException;
+import com.drew.metadata.Metadata;
+
+import java.util.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.Map;
+import java.io.IOException;
+import java.util.List;
+
 
 /**
  * Created by anandabh on 1/24/2016.
@@ -91,5 +98,47 @@ public class ImageUtility {
             e.printStackTrace();
         }
         return returnValue;
+    }
+
+    public static Metadata getImageMetadata(File file) {
+        try {
+            return ImageMetadataReader.readMetadata(file);
+        } catch (ImageProcessingException e) {
+            return null;
+        } catch (IOException e) {
+            return null;
+        }
+    }
+
+    public static boolean isSimilar(String hashA, String hashB){
+        if(hashA.length() != hashB.length()){
+            return false;
+        }
+        int distance = 0 ;
+        for(int x=0;x< hashA.length();x++){
+            if(hashA.charAt(x) != hashB.charAt(x))
+                distance++;
+        }
+        if(distance <= 10)
+            return true;
+        else
+            return false;
+    }
+
+    public static void collectAllImages(File directory, List<File> filesList, boolean recursive) {
+        if (null == directory && null == directory.listFiles())
+            return;
+        File[] files = directory.listFiles();
+
+        for (File file :  files) {
+            if (file.isDirectory()) {
+                if (recursive)
+                    collectAllImages(file, filesList, recursive);
+            }
+
+            if (file.isFile() && null != getImageMetadata(file)) {
+                filesList.add(file);
+            }
+        }
     }
 }

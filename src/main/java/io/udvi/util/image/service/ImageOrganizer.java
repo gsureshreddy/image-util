@@ -1,8 +1,6 @@
 package io.udvi.util.image.service;
 
-import com.drew.imaging.ImageMetadataReader;
-import com.drew.imaging.ImageProcessingException;
-import com.drew.metadata.Metadata;
+import io.udvi.util.image.core.ImageUtility;
 import io.udvi.util.image.core.MetadataParser;
 import lombok.Data;
 
@@ -38,15 +36,7 @@ public class ImageOrganizer {
         this.targetDirectory = new File(this.targetDirectoryPath);
     }
 
-    private Metadata getImageMetadata(File file) {
-        try {
-            return ImageMetadataReader.readMetadata(file);
-        } catch (ImageProcessingException e) {
-            return null;
-        } catch (IOException e) {
-            return null;
-        }
-    }
+
 
     private void processDirectory(File directory) {
         if (directory.listFiles() == null)
@@ -56,7 +46,7 @@ public class ImageOrganizer {
             if (file.isDirectory()) {
                 processDirectory(file);
             } else {
-                if (getImageMetadata(file) != null) {
+                if (ImageUtility.getImageMetadata(file) != null) {
                     MetadataParser metadataParser = new MetadataParser(file);
                     if (metadataParser.getDeviceMake() != null) {
                         Calendar calendar = metadataParser.getOriginalDate();
